@@ -7,14 +7,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { LoginComponent } from './components/login/login.component';
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
-import { NavGeneralComponent } from './components/nav-general/nav-general.component'
+import { NavGeneralComponent } from './components/nav-general/nav-general.component';
+import { RegistroComponent } from './components/registro/registro.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NavegacionComponent,
-    NavGeneralComponent
+    NavGeneralComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,
