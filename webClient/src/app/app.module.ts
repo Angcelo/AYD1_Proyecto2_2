@@ -9,7 +9,8 @@ import { LoginComponent } from './components/login/login.component';
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
 import { NavGeneralComponent } from './components/nav-general/nav-general.component';
 import { RegistroComponent } from './components/registro/registro.component';
-import { CarritoComponent } from './components/carrito/carrito.component'
+import { CarritoComponent } from './components/carrito/carrito.component';
+import { ProductosComponent } from './components/productos/productos.component'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CarritoComponent } from './components/carrito/carrito.component'
     NavegacionComponent,
     NavGeneralComponent,
     RegistroComponent,
-    CarritoComponent
+    CarritoComponent,
+    ProductosComponent
   ],
   imports: [
     BrowserModule,
