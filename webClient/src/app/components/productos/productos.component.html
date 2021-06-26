@@ -14,18 +14,22 @@
   </div>
 </div>
 <div class="row">
-    <div class="col-md-4 p-4" >
+    <div class="col-md-4 p-4" *ngFor='let producto of productos'>
         <div class="card border-primary mb-3 card-foto">
             <div class="card-header">
-              <h4 class="card-title">Titulo</h4>
+              <h4 class="card-title">{{producto.descripcion}}</h4>
             </div>
             <div class="card-body">
               
               <!--img class="img-card-top w-100" [src]="'http://localhost:8080/' + producto.foto" alt="Card image"-->
-              <h4 class="card-text p-4">Q. </h4>
-              <a  class="card-link btn btn-outline-primary"></a>
-              <a  class="card-link btn btn-outline-primary"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+              <h4 class="card-text p-4">Q. {{producto.precioVenta}} </h4>
+              <a  class="card-link btn btn-outline-primary"><i class="fa fa-cart-plus" aria-hidden="true"></i>Añadir a carrito</a>
             </div> 
         </div>
     </div>
 </div>
+
+<mat-paginator [length]="productos.length"
+[pageSize]="10"
+(page) = "cambiarPagina($event)">
+</mat-paginator>
