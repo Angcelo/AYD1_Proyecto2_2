@@ -1,0 +1,52 @@
+<app-navegacion></app-navegacion>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 p-4">
+            <div class="page-header">
+                <h1 style="text-align: center;"><i class="fa fa-shopping-cart" aria-hidden="true"></i>  Mi carrito</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row p-4">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">ID_prod</th>
+                <th scope="col">Descripcion</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-light" >
+                <th scope="row"> </th>
+                <td> </td>
+                <td>
+                  <input type="number" >
+                </td>
+                <td> </td>
+                <td> </td>
+                <td><a  class="btn btn-danger" >X</a></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="form-group">
+              <legend>Total: </legend>
+          </div>
+          <div class="form-group ml-auto">
+            <a style="margin-right: 5px;" class="btn btn-info">Guardar</a>
+              <a  class="btn btn-primary">Comprar</a>
+          </div>
+    </div>
+    <div class="row">        
+        <div class="form-group ml-auto">          
+            <div [ngClass]="'alert alert-dismissible alert-success'" role="alert">
+                
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

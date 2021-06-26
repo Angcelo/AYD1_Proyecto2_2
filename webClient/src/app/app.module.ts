@@ -8,7 +8,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { LoginComponent } from './components/login/login.component';
 import { NavegacionComponent } from './components/navegacion/navegacion.component';
 import { NavGeneralComponent } from './components/nav-general/nav-general.component';
-import { RegistroComponent } from './components/registro/registro.component'
+import { RegistroComponent } from './components/registro/registro.component';
+import { CarritoComponent } from './components/carrito/carrito.component'
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { RegistroComponent } from './components/registro/registro.component'
     LoginComponent,
     NavegacionComponent,
     NavGeneralComponent,
-    RegistroComponent
+    RegistroComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,
