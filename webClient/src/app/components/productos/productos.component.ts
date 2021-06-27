@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-productos',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductosComponent implements OnInit {
 
-  productos:any = [
+  productos:any[] = [
     {
       idproducto : 1,
       descripcion : "Auto control remoto",
@@ -60,59 +61,67 @@ export class ProductosComponent implements OnInit {
     },
     {
       idproducto : 11,
-      descripcion : "Auto control remoto",
+      descripcion : "Moto control remoto",
       precioVenta: 56.25
     },
     {
       idproducto : 12,
+      descripcion : "Moto control remoto",
+      precioVenta: 56.25
+    },
+    {
+      idproducto : 13,
+      descripcion : "Moto control remoto",
+      precioVenta: 56.25
+    },
+    {
+      idproducto : 14,
       descripcion : "Auto control remoto",
       precioVenta: 56.25
     },
     {
-    idproducto : 13,
-    descripcion : "Auto control remoto",
-    precioVenta: 56.25
-  },
-  {
-    idproducto : 14,
-    descripcion : "Auto control remoto",
-    precioVenta: 56.25
-  },
-  {
-    idproducto : 15,
-    descripcion : "Auto control remoto",
-    precioVenta: 56.25
-  },
-  {
-    idproducto : 16,
-    descripcion : "Auto control remoto",
-    precioVenta: 56.25
-  },
-  {
-    idproducto : 17,
-    descripcion : "Auto control remoto",
-    precioVenta: 56.25
-  },
-  {
-    idproducto : 18,
-    descripcion : "Auto control remoto",
-    precioVenta: 56.25
-  },
-  {
-    idproducto : 19,
-    descripcion : "Auto control remoto",
-    precioVenta: 56.25
-  },
-  {
-    idproducto : 20,
-    descripcion : "Auto control remoto",
-    precioVenta: 56.25
-  }
+      idproducto : 15,
+      descripcion : "Auto control remoto",
+      precioVenta: 56.25
+    },
+    {
+      idproducto : 16,
+      descripcion : "Auto control remoto",
+      precioVenta: 56.25
+    },
+    {
+      idproducto : 17,
+      descripcion : "Auto control remoto",
+      precioVenta: 56.25
+    },
+    {
+      idproducto : 18,
+      descripcion : "Auto control remoto",
+      precioVenta: 56.25
+    },
+    {
+      idproducto : 19,
+      descripcion : "Auto control remoto",
+      precioVenta: 56.25
+    },
+    {
+      idproducto : 20,
+      descripcion : "Auto control remoto",
+      precioVenta: 56.25
+    }
   ]
+
+  inicio:number = 0
+  final:number = 10
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  cambiarPagina(e:PageEvent):void{
+    console.log(e)
+    this.inicio = e.pageIndex * e.pageSize
+    this.final = this.inicio + e.pageSize
+  }
 }
