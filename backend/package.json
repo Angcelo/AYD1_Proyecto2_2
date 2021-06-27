@@ -1,0 +1,33 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Proyecto 2 AYD1",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Angcelo/AYD1_Proyecto2_2.git"
+  },
+  "author": "G2",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Angcelo/AYD1_Proyecto2_2/issues"
+  },
+  "homepage": "https://github.com/Angcelo/AYD1_Proyecto2_2#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^9.0.1",
+    "nodemon": "^2.0.7",
+    "request": "^2.88.2",
+    "supertest": "^6.1.3"
+  }
+}
