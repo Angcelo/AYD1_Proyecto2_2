@@ -4,7 +4,7 @@
   "description": "Proyecto 2 AYD1",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter spec",
+    "test": "mocha --reporter spec --exit",
     "start": "nodemon index.js"
   },
   "repository": {
