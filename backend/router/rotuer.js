@@ -7,5 +7,12 @@ router.get('/',(req,res)=>{
 })
 
 router.get('/usuario',usuarios.bienvenida)
+router.post('/usuario/registro',usuarios.register)
+router.post('/usuario/login',usuarios.login)
+router.post('/usuario/addCarrito',usuarios.añadirCarrito)
+router.put('/usuario/cantidadCarrito',usuarios.cantidadCarrito)
+router.get('/usuario/Carrito',usuarios.Carrito)
+router.post('/usuario/comprar',usuarios.Comprar)
+
 
 module.exports = router
