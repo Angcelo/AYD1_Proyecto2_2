@@ -1,0 +1,25 @@
+pipeline
+{
+  agent any
+  tools {nodejs "node"}
+  stages
+  {
+    stages('Git')
+    {
+      steps 
+      {
+        git branch: '', url: ''
+      }
+    }
+
+    stage('Install')
+    {
+      steps { sh 'npm install' }
+    }
+
+    stages('Test')
+    {
+      steps {sh 'npm test'}
+    }
+  }
+}
