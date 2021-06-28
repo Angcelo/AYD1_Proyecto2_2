@@ -59,7 +59,7 @@ exports.verCategoria = async (req, res) => {
         )
     } catch (error) {
         console.log(error);
-        res.send(400).json({status:0, mensaje:'No se ha podido ver la categoria.', data:error})
+        res.status(400).json({status:0, mensaje:'No se ha podido ver la categoria.', data:error})
     }
 }
 

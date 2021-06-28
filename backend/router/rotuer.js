@@ -12,6 +12,7 @@ router.post('/usuario/login',usuarios.login)
 router.post('/usuario/addCarrito',usuarios.añadirCarrito)
 router.put('/usuario/cantidadCarrito',usuarios.cantidadCarrito)
 router.get('/usuario/Carrito',usuarios.Carrito)
+router.delete('/usuario/quitarCarrito',usuarios.quitarCarrito)
 router.post('/usuario/comprar',usuarios.Comprar)
 
 

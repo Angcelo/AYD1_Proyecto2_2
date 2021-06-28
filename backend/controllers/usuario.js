@@ -47,11 +47,10 @@ exports.register = async (req,res) =>
           values ('${nombre}','${apellido}','${dpi}','${correoElectronico.toLowerCase()}','${contraHash}','${direccion}');`
           db.connection.query(sql2, function (error, results) {
               if (error) res.status(400).json({status:0,mensaje:error,data:{}})
-              console.log(results);
               res.status(200).json({status:1,mensaje:"Registado con exito",data:{}});
           })
         }else{
-            res.status(200).json({status:0,mensaje:"Usuario ya existe, elija otro nombre de usuario por favor",data:{}})
+            res.status(200).json({status:0,mensaje:"Correo Electronico ya registrado",data:{}})
         }
       }
     )
@@ -78,6 +77,24 @@ exports.añadirCarrito = async (req,res) =>
       {
         if(err) res.status(400).json({status:0,mensaje:err,data:{}})
         res.status(200).json({status:1,mensaje:"Añadido al carrito",data:{}})
+      }
+    )
+  } catch (error) {
+    res.status(400).json({status:0,mensaje:error,data:{}})
+  }
+}
+
+exports.quitarCarrito = async (req,res) =>
+{
+  const idUsuario = req.query.idUsuario
+  const idProducto = req.query.idProducto
+  try {
+    db.connection.query(
+      `DELETE FROM DetalleCarrito WHERE idUsuario=${idUsuario} AND idProducto=${idProducto}`,
+      function(err,result)
+      {
+        if(err) res.status(400).json({status:0,mensaje:err,data:{}})
+        res.status(200).json({status:1,mensaje:"Eliminado del carrito",data:{}})
       }
     )
   } catch (error) {
@@ -121,7 +138,7 @@ exports.Carrito = async (req,res) =>
       }
     )
   } catch (error) {
-    if(err) res.status(400).json({status:0,mensaje:error,data:{}})
+    res.status(400).json({status:0,mensaje:error,data:{}})
   }
 }
 
@@ -138,6 +155,6 @@ exports.Comprar = async (req,res) =>
       }
     )
   } catch (error) {
-    if(err) res.status(400).json({status:0,mensaje:error,data:{}})
+    res.status(400).json({status:0,mensaje:error,data:{}})
   }
 } 
