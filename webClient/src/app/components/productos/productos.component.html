@@ -31,7 +31,7 @@
                   
                   <!--img class="img-card-top w-100" [src]="'http://localhost:8080/' + producto.foto" alt="Card image"-->
                   <h4 class="card-text p-4">Q. {{producto.precioVenta}} </h4>
-                  <a  class="card-link btn btn-outline-primary"><i class="fa fa-cart-plus" aria-hidden="true"></i>Añadir a carrito</a>
+                  <a [hidden] = "oculto"  class="card-link btn btn-outline-primary"><i class="fa fa-cart-plus" aria-hidden="true"></i>Añadir a carrito</a>
                 </div> 
             </div>
         </div>

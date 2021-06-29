@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { UsuarioGuard } from 'src/app/guards/usuario.guard';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-productos',
@@ -113,14 +115,18 @@ export class ProductosComponent implements OnInit {
 
   inicio:number = 0
   final:number = 10
+  oculto : boolean = false
 
-  constructor() { }
+  constructor(
+    private serv:UsuarioService,
+    private guard:UsuarioGuard
+    ) { }
 
   ngOnInit(): void {
+    if(this.serv.getUsuario() == null || this.serv.getUsuario() == undefined || this.serv.getUsuario() == "") this.oculto = true
   }
 
   cambiarPagina(e:PageEvent):void{
-    console.log(e)
     this.inicio = e.pageIndex * e.pageSize
     this.final = this.inicio + e.pageSize
   }
