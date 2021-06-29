@@ -16,17 +16,17 @@
                         <div class="form-group">
                             <div class="input-group mb-3">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>                            
-                            <input type="email" class="form-control" name = "correo" placeholder="E-mail" />
+                            <input type="email" class="form-control" [(ngModel)]= "correo" name = "correo" placeholder="E-mail" />
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group mb-3">
                                 <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                                <input class="form-control" type="password" placeholder="Password" />
+                                <input class="form-control" type="password" [(ngModel)]= "password" name = "password" placeholder="Password" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <a type="submit"  class="card-link btn btn-primary btn-lg btn-block">Iniciar Sesion</a>
+                            <a type="submit" (click) = 'loguear()' class="card-link btn btn-primary btn-lg btn-block">Iniciar Sesion</a>
                         </div>
                         <div class="row justify-content-center">
                             <a type="submit" routerLink="/registro"  class="card-link btn btn-link">Registrarse</a>

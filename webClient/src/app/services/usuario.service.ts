@@ -34,4 +34,5 @@ export class UsuarioService {
     localStorage.removeItem("logueado")
     this.router.navigate(['/login'])
   }
+
 }

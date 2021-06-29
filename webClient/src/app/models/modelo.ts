@@ -14,3 +14,9 @@ export interface Login{
     correoElectronico:string,
     contrasena:string
 }
+
+export interface Respuesta{
+    status:number,
+    mensaje:string,
+    data:any
+}
