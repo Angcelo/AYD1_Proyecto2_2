@@ -36,7 +36,7 @@ export class RegistroComponent implements OnInit {
       "direccion":this.direccion
     }
     let respuesta:Respuesta
-    this.servicio.loguear(registrar).subscribe(
+    this.servicio.registrarUsuario(registrar).subscribe(
       (res)=>{
         respuesta = res as Respuesta
         console.log(respuesta.status)
