@@ -25,12 +25,12 @@
                 <td>{{p.descripcion}} </td>
                 <td>
                   <input type="number" [(ngModel)]="p.cantidad">
-                  <a (click) = "modificarCantidad()" style="margin-right: 5px;" class="btn btn-info">Guardar</a>
+                  <a (click) = "modificarCantidad(p.idProducto,p.cantidad)" style="margin-right: 5px;" class="btn btn-info">Guardar</a>
                 </td>
                 <td>{{p.montoUnidad}}</td>
                 <td>{{p.subTotal}}</td>
                 <td>{{p.descuento}}</td>
-                <td><a (click) = "quitarCarrito()" class="btn btn-danger" >X</a></td>
+                <td><a (click) = "quitarCarrito(p.idProducto)" class="btn btn-danger" >X</a></td>
               </tr>
             </tbody>
           </table>
@@ -38,7 +38,7 @@
               <legend>Total: {{total}}</legend>
           </div>
           <div class="form-group ml-auto">
-              <a  class="btn btn-primary">Comprar</a>
+              <a  class="btn btn-primary" (click)="comprar()">Comprar</a>
           </div>
     </div>
     <div class="row">        
@@ -52,3 +52,23 @@
         </div>
     </div>
 </div>
+<form>
+  <div class="row justify-content-center">
+      <div class="col-md-6 p-4">
+          <fieldset>
+          <div class="form-group">
+              <input type="text" class="form-control" [(ngModel)]= "nit" name = "nit" placeholder="NIT">
+          </div>
+          <div class="form-group">
+              <input type="text" class="form-control" [(ngModel)]= "correo" name = "correo" placeholder="Correo">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]= "telefono" name = "telefono" placeholder="Telefono">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]= "nombre" name = "nombre" placeholder="Nombre">
+          </div>
+          </fieldset>
+      </div>
+  </div>
+</form>

@@ -28,7 +28,7 @@ export interface Comprar{
     nit:string,
     telefono:string,
     formaPago:string,
-    correoElectronico:string
+    correoConfirmacion:string
 }
 
 export interface Producto{
