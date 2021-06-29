@@ -29,7 +29,7 @@ export class UsuarioService {
   }
 
   quitarCarrito(carrito: Carrito){
-    return this.http.delete(`${this.API_URL}quitarCarrito/?idUsuario=${carrito.idUsuario}&idProducto=${carrito.idProducto}`)
+    return this.http.delete(`${this.API_URL}quitarCarrito?idUsuario=${carrito.idUsuario}&idProducto=${carrito.idProducto}`)
   }
   
   cantidadCarrito(carrito2: CarritoCantidad){
@@ -37,7 +37,7 @@ export class UsuarioService {
   }
   
   carrito(carrito2: number){
-    return this.http.get(`${this.API_URL}Carrito/?idUsuario=${carrito2}`)
+    return this.http.get(`${this.API_URL}Carrito?idUsuario=${carrito2}`)
   }
 
   comprar(comprar: Comprar){

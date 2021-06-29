@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { UsuarioGuard } from 'src/app/guards/usuario.guard';
-import { Categoria, Producto, Respuesta } from 'src/app/models/modelo';
+import { Categoria, Producto, Respuesta,Carrito} from 'src/app/models/modelo';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { ProductoService } from 'src/app/services/producto.service';
 
@@ -21,7 +21,7 @@ export class ProductosComponent implements OnInit {
     }
   ]
   categoria:number = 0
-
+  descripcion:string=""
   inicio:number = 0
   final:number = 10
   oculto : boolean = false
@@ -35,6 +35,14 @@ export class ProductosComponent implements OnInit {
   ngOnInit(): void {
     if(this.serv.getUsuario() == null || this.serv.getUsuario() == undefined || this.serv.getUsuario() == "") this.oculto = true 
     this.getProductos()
+    this.servProducto.getCategoria().subscribe(
+      (res)=>{
+        let cat:Respuesta
+        console.log(res)
+        cat = res as Respuesta
+        this.categorias = this.categorias.concat(cat.data);
+      }
+    )
 
   }
 
@@ -43,15 +51,33 @@ export class ProductosComponent implements OnInit {
     this.final = this.inicio + e.pageSize
   }
 
-  anadirCarrito(){
-
+  anadirCarrito(producto:number){
+    let carrito:Carrito={
+      idUsuario:Number(this.serv.getUsuario()),
+      idProducto:Number(producto)
+    }
+    this.serv.addCarrito(carrito).subscribe(
+      (res)=>{
+        let cat:Respuesta
+        console.log(res)
+        cat = res as Respuesta
+        this.categorias = this.categorias.concat(cat.data);
+      }
+    )
   }
 
   buscar(){
     if(this.categoria == 0){
       this.getProductos()
     }else{
-      
+      this.servProducto.buscarProductoCat(this.categoria).subscribe(
+        (res)=>{
+          let cat:Respuesta
+          console.log(res)
+          cat = res as Respuesta
+          this.productos = cat.data;
+        }
+      )
     }
   }
 
@@ -94,4 +120,16 @@ export class ProductosComponent implements OnInit {
       }
     )
   }
+  buscarProducto():void{
+    let producto:Respuesta
+    this.servProducto.buscarProducto(this.descripcion).subscribe(
+      (res)=>{
+        console.log(res)
+        producto = res as Respuesta
+        this.productos = producto.data
+      }
+    )
+  }
+
+  
 }

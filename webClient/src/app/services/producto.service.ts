@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Producto } from "../models/modelo";
+import { Categoria, Producto } from "../models/modelo";
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +23,12 @@ export class ProductoService {
     return this.http.get(`${this.API_URL}categorias`)
   }
 
+  buscarProductoCat(idCat:number){
+    return this.http.get(`${this.API_URL}productoscategoria?idCategoria=${idCat}`)
+  }
+
+  buscarProducto(descripcion:string){
+    return this.http.get(`${this.API_URL}productosdescripcion?descripcion=${descripcion}`)
+  }
 
 }
