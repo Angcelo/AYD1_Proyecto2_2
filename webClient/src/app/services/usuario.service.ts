@@ -43,6 +43,7 @@ export class UsuarioService {
   comprar(comprar: Comprar){
     return this.http.post(`${this.API_URL}comprar`,comprar)
   }
+  
 
    //TO DO SET LOG ACTUAL
    setUsuario(user:number){
