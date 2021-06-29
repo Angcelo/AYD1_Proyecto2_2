@@ -129,7 +129,9 @@ exports.Carrito = async (req,res) =>
   const idUsuario = req.query.idUsuario
   try {
     db.connection.query(
-      `SELECT * FROM DetalleCarrito
+      `SELECT DC.idProducto,P.descripcion,C.categoria,DC.cantidad,DC.montoUnidad,DC.subTotal,DC.descuento FROM DetalleCarrito DC
+      INNER JOIN Producto P ON P.idProducto = DC.idProducto
+      INNER JOIN Categoria C ON C.idCategoria = P.idCategoria
       WHERE idUsuario = ${idUsuario}`,
       function(err,result)
       {
