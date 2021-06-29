@@ -16,8 +16,9 @@ export class RegistroComponent implements OnInit {
   dpi:string = ""
   correo:string = ""
   contrasena:string = ""
-  contrasena2:string = ""
   direccion:string = ""
+  oculto:boolean = true
+  mensaje:string = ""
   constructor(
     private servicio:UsuarioService,
     private router:Router
@@ -27,6 +28,8 @@ export class RegistroComponent implements OnInit {
   }
 
   registrar():void{
+    this.oculto = true
+    this.mensaje = ""
     let registrar:Registro = {
       "nombre": this.nombre,
       "apellido": this.apellido,
@@ -36,17 +39,24 @@ export class RegistroComponent implements OnInit {
       "direccion":this.direccion
     }
     let respuesta:Respuesta
+    console.log(registrar)
     this.servicio.registrarUsuario(registrar).subscribe(
       (res)=>{
         respuesta = res as Respuesta
-        console.log(respuesta.status)
-        console.log(respuesta.mensaje)
-        this.nombre=""
-        this.contrasena=""
+        this.mensaje = respuesta.mensaje
+        console.log(respuesta)
+        this.nombre = ""
+        this.contrasena = ""
         this.direccion = ""
-        this.dpi= ""
+        this.dpi = ""
         this.correo = ""
         this.apellido = ""
+        this.oculto = false
+
       })
+  }
+
+  ocultar(){
+    this.oculto = true
   }
 }
