@@ -31,9 +31,9 @@
                         <div class="row justify-content-center">
                             <a type="submit" routerLink="/registro"  class="card-link btn btn-link">Registrarse</a>
                         </div>
-                            <div [ngClass]="'alert alert-dismissible alert-danger'" role="alert">
-                                
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <div [hidden] = "oculto" [ngClass]="'alert alert-dismissible alert-danger'" role="alert">
+                                {{mensaje}}
+                                <button (click) = "ocultar()" type="button" class="close" data-dismiss="alert" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>

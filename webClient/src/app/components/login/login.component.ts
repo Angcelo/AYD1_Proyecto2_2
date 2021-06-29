@@ -23,7 +23,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   loguear():void{
-    
+    this.oculto = true
+    this.mensaje = ""
     let login:Login = {
       "correoElectronico": this.correo,
       "contrasena" : this.password
@@ -33,15 +34,20 @@ export class LoginComponent implements OnInit {
       (res)=>{
         autenticado = res as Respuesta
         let respuesta:Usuario = autenticado.data 
-        if (respuesta.idUsuario != 0) {  
+        if (respuesta.idUsuario != 0 && autenticado.status == 1) {  
           this.servicio.setUsuario(respuesta.idUsuario)
           this.router.navigate(['/home'])
         }
-        this.oculto = false
         this.correo = ""
         this.password = ""
+        this.mensaje = autenticado.mensaje
+        this.oculto = false
         console.log(this.mensaje)
       })
     
+  }
+
+  ocultar(){
+    this.oculto = true
   }
 }

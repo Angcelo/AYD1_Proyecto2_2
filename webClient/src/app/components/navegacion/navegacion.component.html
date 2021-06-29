@@ -16,9 +16,9 @@
           </li>
         </ul>
         <form class="d-flex ml-auto">
-          <a class="btn btn-outline-dark my-2 my-sm-0" [hidden] = "normal" routerLink = "/login"  type="submit">LogIn</a>
-          <a class="btn btn-outline-dark my-2 my-sm-0" [hidden] = "normal" routerLink = "/registro" type="submit">Sign Up</a>
-          <button class="btn btn-outline-light my-2 my-sm-0" [hidden] = "!normal" type="submit">Logout</button>
+          <a style="margin-right: 5px;" class="btn btn-outline-light my-2 my-sm-0" [hidden] = "normal" routerLink = "/login"  type="submit">LogIn</a>
+          <a class="btn btn-outline-light my-2 my-sm-0" [hidden] = "normal" routerLink = "/registro" type="submit">Sign Up</a>
+          <button (click) = "cerrarSesion()" class="btn btn-outline-light my-2 my-sm-0" [hidden] = "!normal" type="submit">Logout</button>
         </form>
       </div>
     </div>
