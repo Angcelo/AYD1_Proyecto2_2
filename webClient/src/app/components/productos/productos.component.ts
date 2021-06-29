@@ -118,8 +118,7 @@ export class ProductosComponent implements OnInit {
   oculto : boolean = false
 
   constructor(
-    private serv:UsuarioService,
-    private guard:UsuarioGuard
+    private serv:UsuarioService
     ) { }
 
   ngOnInit(): void {
