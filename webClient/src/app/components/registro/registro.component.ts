@@ -16,6 +16,7 @@ export class RegistroComponent implements OnInit {
   dpi:string = ""
   correo:string = ""
   contrasena:string = ""
+  contrasena2:string = ""
   direccion:string = ""
   constructor(
     private servicio:UsuarioService,
