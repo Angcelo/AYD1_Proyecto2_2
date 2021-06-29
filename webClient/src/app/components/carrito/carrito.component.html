@@ -16,34 +16,36 @@
                 <th scope="col">Cantidad</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Subtotal</th>
+                <th scope="col">Descuento</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="table-light" >
-                <th scope="row"> </th>
-                <td> </td>
+              <tr class="table-light" *ngFor = "let p of productos">
+                <th scope="row">{{p.idProducto}}</th>
+                <td>{{p.descripcion}} </td>
                 <td>
-                  <input type="number" >
+                  <input type="number" [(ngModel)]="p.cantidad">
+                  <a (click) = "modificarCantidad()" style="margin-right: 5px;" class="btn btn-info">Guardar</a>
                 </td>
-                <td> </td>
-                <td> </td>
+                <td>{{p.montoUnidad}}</td>
+                <td>{{p.subTotal}}</td>
+                <td>{{p.descuento}}</td>
                 <td><a  class="btn btn-danger" >X</a></td>
               </tr>
             </tbody>
           </table>
           <div class="form-group">
-              <legend>Total: </legend>
+              <legend>Total: {{total}}</legend>
           </div>
           <div class="form-group ml-auto">
-            <a style="margin-right: 5px;" class="btn btn-info">Guardar</a>
               <a  class="btn btn-primary">Comprar</a>
           </div>
     </div>
     <div class="row">        
         <div class="form-group ml-auto">          
             <div [ngClass]="'alert alert-dismissible alert-success'" role="alert">
-                
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                {{mensaje}}
+                <button (click) = "ocultar()" type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>

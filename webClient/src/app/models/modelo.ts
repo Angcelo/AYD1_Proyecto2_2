@@ -47,3 +47,13 @@ export interface Respuesta{
     mensaje:string,
     data:any
 }
+
+export interface CarritoCompra{
+    categoria:string,
+    idProducto:number,
+    cantidad:number,
+    montoUnidad:number,
+    subTotal:number,
+    descuento:number,
+    descripcion:string
+}

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -11,8 +10,7 @@ export class NavegacionComponent implements OnInit {
   normal:boolean = true
 
   constructor(
-    private serv: UsuarioService,
-    private router:Router
+    private serv: UsuarioService
     ) { }
 
   ngOnInit(): void {
@@ -21,7 +19,6 @@ export class NavegacionComponent implements OnInit {
 
   cerrarSesion(){
     this.serv.logout()
-    this.router.navigate(['/login'])
   }
 
 }
