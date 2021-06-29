@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Login } from "../models/modelo";
+import { Login, Usuario, Registro } from "../models/modelo";
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,10 @@ export class UsuarioService {
     
   loguear(user:Login){
     return this.http.post(`${this.API_URL}login`, user)
+  }
+
+  registrarUsuario(user:Registro){
+    return this.http.post(`${this.API_URL}registro`, user)
   }
    //TO DO SET LOG ACTUAL
    setUsuario(user:number){

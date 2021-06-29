@@ -9,6 +9,14 @@ export interface Usuario{
     cantidadCompras:number,
     descuentoActual:number
 }
+export interface Registro{
+    nombre:string,
+    apellido:string,
+    dpi:string,
+    correoElectronico:string,
+    contrasena:string,
+    direccion:string
+}
 
 export interface Login{
     correoElectronico:string,
