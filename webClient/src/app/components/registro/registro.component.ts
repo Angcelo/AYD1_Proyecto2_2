@@ -16,7 +16,6 @@ export class RegistroComponent implements OnInit {
   dpi:string = ""
   correo:string = ""
   contrasena:string = ""
-  contrasena2:string = ""
   direccion:string = ""
   constructor(
     private servicio:UsuarioService,
@@ -38,8 +37,15 @@ export class RegistroComponent implements OnInit {
     let respuesta:Respuesta
     this.servicio.loguear(registrar).subscribe(
       (res)=>{
+        respuesta = res as Respuesta
         console.log(respuesta.status)
         console.log(respuesta.mensaje)
+        this.nombre=""
+        this.contrasena=""
+        this.direccion = ""
+        this.dpi= ""
+        this.correo = ""
+        this.apellido = ""
       })
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Login, Usuario, Registro } from "../models/modelo";
+import { Login, Usuario, Registro, Carrito } from "../models/modelo";
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +23,13 @@ export class UsuarioService {
   registrarUsuario(user:Registro){
     return this.http.post(`${this.API_URL}registro`, user)
   }
+
+  addCarrito(carrito:Carrito){
+    return this.http.post(`${this.API_URL}addCarrito`, carrito)
+  }
+
+  
+  
    //TO DO SET LOG ACTUAL
    setUsuario(user:number){
     localStorage.setItem("logueado",String(user))
