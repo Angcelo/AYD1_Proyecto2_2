@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { UsuarioGuard } from 'src/app/guards/usuario.guard';
+import { Categoria, Producto } from 'src/app/models/modelo';
 import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
@@ -10,123 +12,72 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class ProductosComponent implements OnInit {
 
-  productos:any[] = [
+  productos:Producto[] = []
+  categorias:Categoria[] = [
     {
-      idproducto : 1,
-      descripcion : "Auto control remoto",
-      precioVenta: 56.25
-    },
-    {
-      idproducto : 2,
-      descripcion : "Auto control remoto",
-      precioVenta: 56.25
-    },
-    {
-      idproducto : 3,
-      descripcion : "Auto control remoto",
-      precioVenta: 56.25
-    },
-    {
-      idproducto : 4,
-      descripcion : "Auto control remoto",
-      precioVenta: 56.25
-    },
-    {
-      idproducto : 5,
-      descripcion : "Auto control remoto",
-      precioVenta: 56.25
-    },
-    {
-      idproducto : 6,
-      descripcion : "Auto control remoto",
-      precioVenta: 56.25
-    },
-    {
-      idproducto : 7,
-      descripcion : "Auto control remoto",
-      precioVenta: 56.25
-    },
-    {
-      idproducto : 8,
-      descripcion : "Auto control remoto",
-      precioVenta: 56.25
-    },
-    {
-      idproducto : 9,
-      descripcion : "Auto control remoto",
-      precioVenta: 56.25
-    },
-    {
-      idproducto : 10,
-      descripcion : "Auto control remoto",
-      precioVenta: 56.25
-    },
-    {
-      idproducto : 11,
-      descripcion : "Moto control remoto",
-      precioVenta: 56.25
-    },
-    {
-      idproducto : 12,
-      descripcion : "Moto control remoto",
-      precioVenta: 56.25
-    },
-    {
-      idproducto : 13,
-      descripcion : "Moto control remoto",
-      precioVenta: 56.25
-    },
-    {
-      idproducto : 14,
-      descripcion : "Auto control remoto",
-      precioVenta: 56.25
-    },
-    {
-      idproducto : 15,
-      descripcion : "Auto control remoto",
-      precioVenta: 56.25
-    },
-    {
-      idproducto : 16,
-      descripcion : "Auto control remoto",
-      precioVenta: 56.25
-    },
-    {
-      idproducto : 17,
-      descripcion : "Auto control remoto",
-      precioVenta: 56.25
-    },
-    {
-      idproducto : 18,
-      descripcion : "Auto control remoto",
-      precioVenta: 56.25
-    },
-    {
-      idproducto : 19,
-      descripcion : "Auto control remoto",
-      precioVenta: 56.25
-    },
-    {
-      idproducto : 20,
-      descripcion : "Auto control remoto",
-      precioVenta: 56.25
+      idCategoria:0,
+      categoria:"todos"
     }
   ]
+  categoria:number = 0
 
   inicio:number = 0
   final:number = 10
   oculto : boolean = false
 
   constructor(
-    private serv:UsuarioService
+    private serv:UsuarioService,
+    private _sanitizer:DomSanitizer,
     ) { }
 
   ngOnInit(): void {
     if(this.serv.getUsuario() == null || this.serv.getUsuario() == undefined || this.serv.getUsuario() == "") this.oculto = true
+
   }
 
   cambiarPagina(e:PageEvent):void{
     this.inicio = e.pageIndex * e.pageSize
     this.final = this.inicio + e.pageSize
+  }
+
+  anadirCarrito(){
+
+  }
+
+  buscar(){
+    if(this.categoria == 0){
+
+    }else{
+      
+    }
+  }
+
+  crearRuta(contenido:string):SafeUrl{
+    var split = contenido.split(',')
+    var splitData = split[0].includes('png') ? 'image/png' : 'image/jpeg'
+
+    const blob:Blob = this.b64ToBlob(split[1], splitData  );
+    const blobUrl = URL.createObjectURL(blob);
+    return this._sanitizer.bypassSecurityTrustUrl(blobUrl);
+  }
+
+  b64ToBlob(b64Data:string, contentType='image/png', sliceSize=512):Blob {
+    const byteCharacters = window.atob(b64Data);
+    const byteArrays = [];
+
+    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+      const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+      const byteNumbers = new Array(slice.length);
+      for (let i = 0; i < slice.length; i++) {
+        byteNumbers[i] = slice.charCodeAt(i);
+      }
+
+      const byteArray = new Uint8Array(byteNumbers);
+      byteArrays.push(byteArray);
+    }
+
+    const blob = new Blob(byteArrays, {type: contentType});
+    return blob;
   }
 }

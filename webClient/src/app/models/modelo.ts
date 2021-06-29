@@ -31,6 +31,14 @@ export interface Comprar{
     correoElectronico:string
 }
 
+export interface Producto{
+    idProducto:number,
+    descripcion:string,
+    precioVenta:number,
+    rutaFoto:string,
+    idCategoria:number
+}
+
 export interface CarritoCantidad{
     idUsuario:number,
     idProducto:number,
@@ -56,4 +64,9 @@ export interface CarritoCompra{
     subTotal:number,
     descuento:number,
     descripcion:string
+}
+
+export interface Categoria{
+    idCategoria:number
+    categoria:string
 }
