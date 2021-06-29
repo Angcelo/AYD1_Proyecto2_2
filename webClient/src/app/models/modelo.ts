@@ -17,6 +17,10 @@ export interface Registro{
     contrasena:string,
     direccion:string
 }
+export interface carrito{
+    idUsuario:number,
+    idProducto:number
+}
 
 export interface Login{
     correoElectronico:string,

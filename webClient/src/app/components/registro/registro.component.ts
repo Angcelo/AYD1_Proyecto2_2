@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Registrar, Respuesta } from "../../models/modelo";
+import { Registro, Respuesta } from "../../models/modelo";
 import { UsuarioService } from "../../services/usuario.service";
 import { Router } from '@angular/router';
 
@@ -27,7 +27,7 @@ export class RegistroComponent implements OnInit {
   }
 
   registrar():void{
-    let registrar:Registrar = {
+    let registrar:Registro = {
       "nombre": this.nombre,
       "apellido": this.apellido,
       "dpi": this.dpi,
