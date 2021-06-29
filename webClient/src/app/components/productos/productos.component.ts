@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { UsuarioGuard } from 'src/app/guards/usuario.guard';
-import { Categoria, Producto } from 'src/app/models/modelo';
+import { Categoria, Producto, Respuesta } from 'src/app/models/modelo';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { ProductoService } from 'src/app/services/producto.service';
 
 @Component({
   selector: 'app-productos',
@@ -27,11 +28,13 @@ export class ProductosComponent implements OnInit {
 
   constructor(
     private serv:UsuarioService,
+    private servProducto:ProductoService,
     private _sanitizer:DomSanitizer,
     ) { }
 
   ngOnInit(): void {
-    if(this.serv.getUsuario() == null || this.serv.getUsuario() == undefined || this.serv.getUsuario() == "") this.oculto = true
+    if(this.serv.getUsuario() == null || this.serv.getUsuario() == undefined || this.serv.getUsuario() == "") this.oculto = true 
+    this.getProductos()
 
   }
 
@@ -46,7 +49,7 @@ export class ProductosComponent implements OnInit {
 
   buscar(){
     if(this.categoria == 0){
-
+      this.getProductos()
     }else{
       
     }
@@ -79,5 +82,16 @@ export class ProductosComponent implements OnInit {
 
     const blob = new Blob(byteArrays, {type: contentType});
     return blob;
+  }
+
+  getProductos():void{
+    let producto:Respuesta
+    this.servProducto.getProductos().subscribe(
+      (res)=>{
+        console.log(res)
+        producto = res as Respuesta
+        this.productos = producto.data
+      }
+    )
   }
 }
