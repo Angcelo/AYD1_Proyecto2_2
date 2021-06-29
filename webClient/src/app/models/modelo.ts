@@ -22,6 +22,21 @@ export interface Carrito{
     idProducto:number
 }
 
+export interface Comprar{
+    idUsuario:number,
+    nombre:string,
+    nit:string,
+    telefono:string,
+    formaPago:string,
+    correoElectronico:string
+}
+
+export interface CarritoCantidad{
+    idUsuario:number,
+    idProducto:number,
+    cantidad:number
+}
+
 export interface Login{
     correoElectronico:string,
     contrasena:string
