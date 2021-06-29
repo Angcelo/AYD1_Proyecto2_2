@@ -8,7 +8,7 @@ import { Login, Usuario, Registro, Carrito,CarritoCantidad,Comprar } from "../mo
 })
 export class UsuarioService {
 
-  API_URL = "http://localhost:3030/usuario/"
+  API_URL = "http://104.198.250.129:3030/usuario/"
 
   constructor(
     private http:HttpClient,

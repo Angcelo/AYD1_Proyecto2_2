@@ -8,7 +8,7 @@ import { Categoria, Producto } from "../models/modelo";
 })
 export class ProductoService {
 
-  API_URL = "http://localhost:3030/catprod/"
+  API_URL = "http://104.198.250.129:3030/catprod/"
 
   constructor(
     private http:HttpClient,
