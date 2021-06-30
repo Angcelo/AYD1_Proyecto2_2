@@ -19,6 +19,7 @@ export class RegistroComponent implements OnInit {
   direccion:string = ""
   oculto:boolean = true
   mensaje:string = ""
+  clase:string = "success"
   constructor(
     private servicio:UsuarioService,
     private router:Router
@@ -30,6 +31,12 @@ export class RegistroComponent implements OnInit {
   registrar():void{
     this.oculto = true
     this.mensaje = ""
+    this.clase = "success"
+    if (!this.validarcontrasena()) {
+      this.clase = "danger"
+      this.oculto = false
+      return
+    }
     let registrar:Registro = {
       "nombre": this.nombre,
       "apellido": this.apellido,
@@ -54,6 +61,17 @@ export class RegistroComponent implements OnInit {
         this.oculto = false
 
       })
+  }
+
+  validarcontrasena():boolean{
+    if (this.contrasena.length < 8)this.mensaje = "La contraseña no puede ser menor a 8 caracteres"
+    else{
+      for (let index = 0; index < this.contrasena.length; index++) {
+        if(!isNaN(Number(this.contrasena.charAt(index)))) return true
+      }
+      this.mensaje = "La contraseña debe ser alfanumerica"
+    }
+    return false
   }
 
   ocultar(){
