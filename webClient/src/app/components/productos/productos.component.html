@@ -33,7 +33,7 @@
                 </div>
                 <div class="card-body">
                   
-                  <!--img class="img-card-top w-100" [src]="crearRuta(producto.rutaFoto)" alt="Card image"-->
+                  <img class="img-card-top w-100" [src]="producto.foto" alt="Card image">
                   <h4 class="card-text p-4">Q. {{producto.precioVenta}} </h4>
                   <a (click)="anadirCarrito(producto.idProducto)" [hidden] = "oculto"  class="card-link btn btn-outline-primary"><i class="fa fa-cart-plus" aria-hidden="true"></i>Añadir a carrito</a>
                 </div> 

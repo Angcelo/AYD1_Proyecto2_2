@@ -31,4 +31,8 @@ export class ProductoService {
     return this.http.get(`${this.API_URL}productosdescripcion?descripcion=${descripcion}`)
   }
 
+  getImg(id:number){
+    return this.http.get(`${this.API_URL}imagen?idImagen=${id}`)
+  }
+
 }

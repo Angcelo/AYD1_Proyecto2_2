@@ -35,8 +35,9 @@ export interface Producto{
     idProducto:number,
     descripcion:string,
     precioVenta:number,
-    rutaFoto:string,
+    rutaFoto:number,
     idCategoria:number
+    foto?:any
 }
 
 export interface CarritoCantidad{

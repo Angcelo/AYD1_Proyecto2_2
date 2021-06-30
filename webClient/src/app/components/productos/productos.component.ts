@@ -43,7 +43,6 @@ export class ProductosComponent implements OnInit {
         this.categorias = this.categorias.concat(cat.data);
       }
     )
-
   }
 
   cambiarPagina(e:PageEvent):void{
@@ -73,21 +72,27 @@ export class ProductosComponent implements OnInit {
       this.servProducto.buscarProductoCat(this.categoria).subscribe(
         (res)=>{
           let cat:Respuesta
-          console.log(res)
           cat = res as Respuesta
           this.productos = cat.data;
+          this.getImg()
         }
       )
     }
   }
 
-  crearRuta(contenido:string):SafeUrl{
-    var split = contenido.split(',')
-    var splitData = split[0].includes('png') ? 'image/png' : 'image/jpeg'
-
-    const blob:Blob = this.b64ToBlob(split[1], splitData  );
-    const blobUrl = URL.createObjectURL(blob);
-    return this._sanitizer.bypassSecurityTrustUrl(blobUrl);
+  crearRuta(p:Producto):void{
+    let contenido:string = ""
+    this.servProducto.getImg(p.rutaFoto).subscribe(
+      res => {
+        let respuesta:Respuesta = res as Respuesta
+        contenido = respuesta.data
+        var split = contenido.split(',')
+        var splitData = split[0].includes('png') ? 'image/png' : 'image/jpeg'
+        const blob:Blob = this.b64ToBlob(split[1], splitData  );
+        const blobUrl = URL.createObjectURL(blob);
+         p.foto = this._sanitizer.bypassSecurityTrustUrl(blobUrl);
+      }
+    )
   }
 
   b64ToBlob(b64Data:string, contentType='image/png', sliceSize=512):Blob {
@@ -117,9 +122,11 @@ export class ProductosComponent implements OnInit {
         console.log(res)
         producto = res as Respuesta
         this.productos = producto.data
+        this.getImg()
       }
     )
   }
+
   buscarProducto():void{
     let producto:Respuesta
     this.servProducto.buscarProducto(this.descripcion).subscribe(
@@ -127,9 +134,15 @@ export class ProductosComponent implements OnInit {
         console.log(res)
         producto = res as Respuesta
         this.productos = producto.data
+        this.getImg()
       }
     )
   }
 
+  getImg():void{   
+    this.productos.forEach(p => {
+      this.crearRuta(p)
+    });
+  }
   
 }
