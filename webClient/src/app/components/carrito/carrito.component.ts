@@ -17,11 +17,19 @@ export class CarritoComponent implements OnInit {
   correo:string=""
   telefono:string=""
   nombre:string = ""
+  formaPago:string = "n"
+  tarjeta:string = ""
+  nonTarjeta:boolean = true
 
   constructor(private servicio:UsuarioService) { }
 
   ngOnInit(): void {
     this.getCarrito()
+  }
+
+  verTarjeta(){
+    if(this.formaPago === 'T') this.nonTarjeta = false
+    else this.nonTarjeta = true
   }
 
   getTotal(){
@@ -67,7 +75,7 @@ export class CarritoComponent implements OnInit {
       nombre:this.nombre,
       nit:this.nit,
       telefono:this.telefono,
-      formaPago:'T',
+      formaPago:this.formaPago,
       correoConfirmacion:this.correo
     }
     console.log(compra)
@@ -82,6 +90,7 @@ export class CarritoComponent implements OnInit {
         this.nit=""
         this.telefono=""
         this.correo=""
+        this.formaPago = "n"
       }
 
     )
