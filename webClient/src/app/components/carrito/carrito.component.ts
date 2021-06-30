@@ -60,6 +60,8 @@ export class CarritoComponent implements OnInit {
   }
 
   comprar(){
+    this.oculto = true
+    this.mensaje = ""
     let compra:Comprar={
       idUsuario:Number(this.servicio.getUsuario()),
       nombre:this.nombre,
@@ -73,6 +75,8 @@ export class CarritoComponent implements OnInit {
       res =>{
         let respuesta:Respuesta = res as Respuesta
         console.log(res)
+        this.mensaje = respuesta.mensaje
+        this.oculto = false
         this.getCarrito()
         this.nombre=""
         this.nit=""
