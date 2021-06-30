@@ -16,5 +16,6 @@ catprod.get('/producto',  productos.verProducto)
 catprod.post('/producto', productos.crearProducto)
 catprod.put('/producto', productos.editarProducto)
 catprod.delete('/producto', productos.eliminarProducto)
+catprod.get('/imagen',productos.getImagen)
 
 module.exports = catprod

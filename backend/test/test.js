@@ -32,6 +32,7 @@ var Carrito =
 var idProducto = 1;
 var idCategoria = 1;
 var descripcion = "hp";
+var idImagen = 1;
 
 var assert = require('assert')
 describe('API',function(){
@@ -183,6 +184,19 @@ describe('API',function(){
     it('GET catprod/producto',(done)=>{
       request(app.listen())
       .get(`/catprod/producto?idProducto=${idProducto}`)
+      .expect(200)
+      .end(function(err,res){
+        console.log(res.status)
+        var respuesta = JSON.parse(res.res.text)
+        expect(res.status).to.equal(200)
+        expect(respuesta.status).to.equal(1)
+        done(err)
+      })
+    })
+
+    it('GET catprod/imagen',(done)=>{
+      request(app.listen())
+      .get(`/catprod/imagen?idImagen=${idImagen}`)
       .expect(200)
       .end(function(err,res){
         console.log(res.status)
