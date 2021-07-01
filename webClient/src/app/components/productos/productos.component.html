@@ -1,0 +1,50 @@
+<app-navegacion></app-navegacion>
+<div class="row justify-content-center">
+    <div class="col-md-6 p-4">
+        <div class="page-header">
+            <h1 style="text-align: center;">Catalogo de Productos</h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+      <div class="col-md-2 p-4">
+        <div class="form-group">
+          <select [(ngModel)] = "categoria" name = "categoria"  id = "inputCat" class="custom-select">
+            <option *ngFor="let c of categorias" value = {{c.idCategoria}}>
+                {{c.categoria}}
+            </option>
+        </select>
+        </div>
+      </div>
+      <div class="col-md-4 p-4">
+        <a (click) = "buscar()" class="card-link btn btn-outline-primary">Buscar Categoria</a>
+      </div>
+      <div class="col-md-2 p-4">
+        <input class="form-control" type="text" [(ngModel)]= "descripcion" name="descripcion" placeholder="Producto...">
+      </div>
+      <div class="col-md-2 p-4">
+        <a (click) = "buscarProducto()" class="card-link btn btn-outline-primary">Buscar Producto</a>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 p-4" *ngFor='let producto of productos | slice:inicio:final'>
+            <div class="card border-primary mb-3 card-foto">
+                <div class="card-header">
+                  <h4 class="card-title">{{producto.descripcion}}</h4>
+                </div>
+                <div class="card-body">
+                  
+                  <img class="img-card-top w-100" [src]="producto.foto" alt="Card image">
+                  <h4 class="card-text p-4">Q. {{producto.precioVenta}} </h4>
+                  <a (click)="anadirCarrito(producto.idProducto)" [hidden] = "oculto"  class="card-link btn btn-outline-primary"><i class="fa fa-cart-plus" aria-hidden="true"></i>Añadir a carrito</a>
+                </div> 
+            </div>
+        </div>
+    </div>
+    
+    <mat-paginator [length]="productos.length"
+    [pageSize]="10"
+    (page) = "cambiarPagina($event)">
+    </mat-paginator>
+</div>

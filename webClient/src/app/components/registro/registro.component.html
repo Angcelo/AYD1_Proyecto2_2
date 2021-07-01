@@ -1,0 +1,48 @@
+<app-navegacion></app-navegacion>
+<div class="container">
+    <div class="row justify-content-center">
+            <div class="page-header">
+                <h1 style="text-align: center;">Sign Up</h1>
+            </div>
+    </div>
+    <form>
+        <div class="row justify-content-center">
+            <div class="col-md-6 p-4">
+                <fieldset>
+                    <div class="row justify-content-center" >
+                        <img src="assets/adminform.svg" style="width: 230px; margin-bottom: 10px"alt="No Image">
+                    </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" [(ngModel)]= "nombre" name = "nombre" placeholder="Nombre">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" [(ngModel)]= "apellido" name = "apellido" placeholder="Apellido">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" [(ngModel)]= "dpi" name = "dpi" placeholder="DPI" >
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" [(ngModel)]= "correo" name = "correo" aria-describedby="emailHelp" placeholder="Correo Electronico" required>
+                </div>
+                
+                <div class="form-group">
+                    <input type="text" placeholder="Direccion" [(ngModel)]= "direccion" name = "direccion" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" [(ngModel)]= "contrasena" name = "contrasena" placeholder="Contraseña">
+                </div>
+                
+                <div class="form-group">
+                    <a type="submit" (click) = "registrar()"  class="card-link btn btn-primary btn-lg btn-block">Registrarse</a>
+                </div>
+                <div [hidden] = "oculto" [ngClass]="'alert alert-dismissible alert-' + clase" role="alert">
+                    {{mensaje}}                   
+                    <button (click) = "ocultar()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                </fieldset>
+            </div>
+        </div>
+      </form>
+</div>
